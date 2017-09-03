@@ -32,7 +32,7 @@ class Category(Base):
         }
 
 class Items(Base):
-    __tablename__ = 'items'
+    __tablename__ = 'wallpapers'
 
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
@@ -40,9 +40,9 @@ class Items(Base):
     description = Column(String(250))
     picture = Column(String(250))
     category_id = Column(Integer, ForeignKey('category.id'))
-    category = relationship(Category, backref=backref('items', cascade='all, delete'))
+    category = relationship(Category, backref=backref('wallpapers', cascade='all, delete'))
     user_id = Column(Integer, ForeignKey('user.id'))
-    user = relationship(User, backref="items")
+    user = relationship(User, backref="wallpapers")
 
     @property
     def serialize(self):
@@ -56,6 +56,6 @@ class Items(Base):
         }
 
 
-engine = create_engine('sqlite:///catalog.db')
+engine = create_engine('sqlite:///wallpapers.db')
 
 Base.metadata.create_all(engine)
