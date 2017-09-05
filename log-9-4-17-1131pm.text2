@@ -1,0 +1,175 @@
+commit bedee50feaebcc6d5003a0705185aeaf6de8cc13
+Author: edwinaquino <github@edwinaquino>
+Date:   Mon Sep 4 23:26:26 2017 -0700
+
+    WORKS: added validation to add category:
+    NOTE: in case you get errors on database_init.py, just deleted wallpapers.db file
+
+commit 7f189e59b5e97ff1c8c0e2aa43a83edb5d10f425
+Author: edwinaquino <github@edwinaquino>
+Date:   Mon Sep 4 23:06:17 2017 -0700
+
+    [BAD] changing picture to picture did not work
+
+commit 99c84f6f95919d9d1341164e38fe4796ca0d6a32
+Author: edwinaquino <github@edwinaquino>
+Date:   Mon Sep 4 23:03:46 2017 -0700
+
+    adding form validation to add wallpaper form
+
+commit 1f69ce5e1953124febfed06a05984dca53a29ebf
+Author: edwinaquino <github@edwinaquino>
+Date:   Mon Sep 4 22:46:23 2017 -0700
+
+    changed login_required to login_check
+
+commit d2468d64bd9b571484b83ba52a1589aaca0afe48
+Author: edwinaquino <github@edwinaquino>
+Date:   Mon Sep 4 20:43:15 2017 -0700
+
+    OK, it works, you just need to be sure you start with a fresh bulit database and user log out so you need to clear out your cookies.
+    PREVIOUS AMMEND: bad, when you add a new category, and click on it, gives error
+
+commit 629e0c20b910cd7fc617ad7833cfbdaefde1d940
+Author: edwinaquino <github@edwinaquino>
+Date:   Mon Sep 4 20:34:20 2017 -0700
+
+    change all "item" occurances on all files to "wallpaper" WORKS OK
+
+commit 3f34f2bee18435580a6922b554575e0817ac6dad
+Author: edwinaquino <github@edwinaquino>
+Date:   Mon Sep 4 20:24:26 2017 -0700
+
+    added edit and delted button to user's created caretory and created walpaper
+
+commit 231410aa6385436706fb275b350a3dfd130790a2
+Author: edwinaquino <github@edwinaquino>
+Date:   Mon Sep 4 20:11:00 2017 -0700
+
+    added styles to inputs, textareas
+
+commit 419f7a1c60bee9f1e2ee8391b5e7f210546ef3f4
+Author: edwinaquino <github@edwinaquino>
+Date:   Mon Sep 4 19:44:11 2017 -0700
+
+    added wallpaper_private.html
+
+commit 891145bfcbc4f98e9fe2f253452b53d0a816cd1e
+Author: edwinaquino <github@edwinaquino>
+Date:   Mon Sep 4 19:33:33 2017 -0700
+
+    fixed private and public categories
+
+commit f92f6c4e49343e80f0b08bc9b8384664be68f08a
+Author: edwinaquino <github@edwinaquino>
+Date:   Mon Sep 4 19:21:11 2017 -0700
+
+    fiex categories styling
+
+commit 768792e0881682fb0df8b6da93af7b533dce042d
+Author: edwinaquino <github@edwinaquino>
+Date:   Mon Sep 4 19:02:12 2017 -0700
+
+    added wall_category_walls_public.html
+
+commit 778028a476ce999cb8d7a7639a4fb26ef9b65d53
+Author: edwinaquino <github@edwinaquino>
+Date:   Mon Sep 4 18:37:22 2017 -0700
+
+    added wall_categories.html template and wall_footer.html
+
+commit d3ac1f68f076477a28861e5b5848cd2b0dbbc676
+Author: edwinaquino <github@edwinaquino>
+Date:   Mon Sep 4 17:45:48 2017 -0700
+
+    added dark color background
+
+commit 09abcf5691a316c81a5dde33b3bc2b92c6d2575c
+Author: edwinaquino <github@edwinaquino>
+Date:   Mon Sep 4 17:30:52 2017 -0700
+
+    REMOVED startbootstrap-3-col-portfolio css file and put CDN instead
+
+commit 0e5e8b5fa06d264977af97c5841752112a5f778c
+Author: edwinaquino <github@edwinaquino>
+Date:   Mon Sep 4 17:12:47 2017 -0700
+
+    LOGOUT WORKS OK NOW
+
+commit a7fed3a9687cd24b75ca67290e1205f82c0905af
+Author: edwinaquino <github@edwinaquino>
+Date:   Mon Sep 4 16:43:17 2017 -0700
+
+    add login button
+
+commit ddca9314c1415e8bd8e7e4d6825ffa2b97728938
+Author: edwinaquino <github@edwinaquino>
+Date:   Mon Sep 4 15:17:32 2017 -0700
+
+    WORKS OK NOW after i created a new branch to test the links,
+
+commit 1a54a389cd2e0eb87f3bb4bc0e2f2329e15e0066
+Author: edwinaquino <github@edwinaquino>
+Date:   Mon Sep 4 14:34:53 2017 -0700
+
+    bad
+
+commit 99ff54a108568d9b455a6eb97323a4f0d4709e14
+Author: edwinaquino <github@edwinaquino>
+Date:   Mon Sep 4 14:24:17 2017 -0700
+
+    added wall_nav.html to wallpaeprs.html
+
+commit 3d7ae008d7d5a919f1e6389e1c3a987d6d3ead2a
+Author: edwinaquino <github@edwinaquino>
+Date:   Sun Sep 3 21:02:23 2017 -0700
+
+    app.py - changed /wallpapers/ URL to /category/
+
+commit 3a50336cd6ca5afc8bef6885fbd3a23476051565
+Author: edwinaquino <github@edwinaquino>
+Date:   Sun Sep 3 20:59:33 2017 -0700
+
+    app.py - moved login routing to the bottom of file
+
+commit 115789ead6a7748e71025e319ee17ee89a031e48
+Author: edwinaquino <github@edwinaquino>
+Date:   Sun Sep 3 20:55:10 2017 -0700
+
+    FIXED database_init.py no errors on Cars Category Anymore
+
+commit 9ecb6c1d6aea125ecb41d6a868897028badb59a7
+Author: edwinaquino <github@edwinaquino>
+Date:   Sun Sep 3 20:40:43 2017 -0700
+
+    REMOVE LOCAL BOOTSTRAP FILES
+
+commit e943c0ff729e939d5f1638c6a4e5f273f19968d0
+Author: edwinaquino <github@edwinaquino>
+Date:   Sun Sep 3 19:57:25 2017 -0700
+
+    FIND AND REPLACE catalog with wallpapers
+
+commit 5e90e1554063b5f49ed7de1cfbcac9971f268286
+Author: edwinaquino <github@edwinaquino>
+Date:   Sun Sep 3 19:52:23 2017 -0700
+
+    FIND AND REPLACE -Catalog with -Website
+
+commit a6abc2aee141eb8d4f3b2ee313035beaeedc5591
+Author: edwinaquino <github@edwinaquino>
+Date:   Sun Sep 3 19:37:36 2017 -0700
+
+    FIND AND REPLACE Items WITH Wallpaper in Sublime
+
+commit 864587eef9d6ceec110cded8ffea7d8f0150bba8
+Author: edwinaquino <github@edwinaquino>
+Date:   Sun Sep 3 19:34:54 2017 -0700
+
+    changed catalog.db
+
+commit f365e9aa595891e834c4e2fc3ccd667143b04f9d
+Author: gmawji <git@gmawji.com>
+Date:   Sun May 21 19:53:37 2017 -0400
+
+    Fixed ondelete CASCADE.

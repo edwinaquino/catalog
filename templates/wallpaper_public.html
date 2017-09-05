@@ -1,0 +1,34 @@
+{% extends "wall_main.html" %}
+{% include "wall_nav.html" %}
+
+
+
+
+
+{% block content %}
+{% include "wall_categories.html" %}
+
+
+
+
+<div class="card h-100">
+            <img class="card-img-top" src="{{ wallpaper.picture }}" alt="{{ wallpaper.name }}">
+            <div class="card-body">
+              <h4 class="card-title">
+                {{ wallpaper.name }}
+              </h4>
+              <p class="card-text">{{ wallpaper.description }}</p>
+
+
+            </div>
+          </div>
+
+
+{% include "wall_footer.html" %}
+
+
+      {% endblock %}
+
+
+
+

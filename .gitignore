@@ -1,0 +1,9 @@
+__pycache__
+*.pyc
+.vagrant
+*.log
+Vagrantfile
+*.db
+static/css/animate*
+static/css/boot*
+static/js/boot*

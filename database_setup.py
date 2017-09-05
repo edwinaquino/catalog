@@ -31,8 +31,8 @@ class Category(Base):
             'id'            : self.id
         }
 
-class Items(Base):
-    __tablename__ = 'wallpapers'
+class Wallpapers(Base):
+    __tablename__ = 'items'
 
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
@@ -40,9 +40,9 @@ class Items(Base):
     description = Column(String(250))
     picture = Column(String(250))
     category_id = Column(Integer, ForeignKey('category.id'))
-    category = relationship(Category, backref=backref('wallpapers', cascade='all, delete'))
+    category = relationship(Category, backref=backref('items', cascade='all, delete'))
     user_id = Column(Integer, ForeignKey('user.id'))
-    user = relationship(User, backref="wallpapers")
+    user = relationship(User, backref="items")
 
     @property
     def serialize(self):

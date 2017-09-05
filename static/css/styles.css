@@ -1,0 +1,46 @@
+body {
+  background: #252525;
+  color:#e1e9f9;
+}
+
+.card{
+  background: #333;
+}
+
+.card-title a {
+    color:#ff9933;
+}
+
+.alert{
+  z-index: 1000;
+}
+
+
+.category_list{
+   background: #666;
+  color:#e1e9f9;
+
+}
+ .category_list a{
+    color:#FFF;
+    text-decoration: none;
+  }
+  footer{
+
+    padding-top: 20px;
+  }
+  nav{
+    margin-bottom: 20px;
+  }
+  .category-title{
+    text-transform: capitalize;
+     color:#ff9933;
+  }
+
+.form-control, .form-control:focus {
+  background: #666;
+  color:#FFF;
+}
+.wallpaper-thumbs{
+  float: left; margin:10px;max-width: 25%;
+}

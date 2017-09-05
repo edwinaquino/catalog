@@ -1,0 +1,21 @@
+{% extends "wall_main.html" %}
+{% include "wall_nav.html" %}
+{% block content %}
+
+<section id="deleteWallpaper" class="section">
+    <div class="section-content container padding-1-5">
+        <h1>Delete Wallpaper</h1>
+        <p class="padding-top-10">Are you sure you want to delete {{wallpaper.name}}?</p>
+
+        <form action="{{url_for('deleteWallpaper', category_name = wallpaper.category.name, item_name = wallpaper.name)}}" method = "post">
+            <div class="form-group padding-top-10">
+                <button type="submit" id="submit" class="btn btn-danger">Delete</button>
+                <a href="{{url_for('showCategory', category_name = wallpaper.category.name)}}">
+                    <button type="button" class="btn btn-default">Cancel</button>
+                </a>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}
