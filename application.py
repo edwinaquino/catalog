@@ -61,14 +61,14 @@ def showCategory(category_name):
     count = session.query(Wallpapers).filter_by(category=category).count()
     creator = getUserInfo(category.user_id)
     if 'username' not in login_session or creator.id != login_session['user_id']:
-        return render_template('wall_category_walls_public.html',
+        return render_template('wall_categories_public.html',
                                 category = category.name,
                                 categories = categories,
                                 items = items,
                                 count = count)
     else:
         user = getUserInfo(login_session['user_id'])
-        return render_template('wall_category_walls_private.html',
+        return render_template('wall_categories_private.html',
                                 category = category.name,
                                 categories = categories,
                                 items = items,
@@ -157,7 +157,7 @@ def deleteCategory(category_name):
         flash('[OK] Category Deleted! '+categoryToDelete.name)
         return redirect(url_for('displayCategory'))
     else:
-        return render_template('deletecategory.html',
+        return render_template('wall_category_delete.html',
                                 category=categoryToDelete)
 
 # Add an wallpaper
@@ -178,7 +178,7 @@ def addWallpaper():
         flash('[OK] Wallpaper Added!')
         return redirect(url_for('displayCategory'))
     else:
-        return render_template('wall_wallpaper_add.html',
+        return render_template('wallpaper_add.html',
                                 categories=categories)
 
 # Edit an wallpaper
@@ -213,7 +213,7 @@ def editWallpaper(category_name, item_name):
         return  redirect(url_for('showCategory',
                                 category_name=editedWallpaper.category.name))
     else:
-        return render_template('edititem.html',
+        return render_template('wallpaper_edit.html',
                                 wallpaper=editedWallpaper,
                                 categories=categories)
 
@@ -238,7 +238,7 @@ def deleteWallpaper(category_name, item_name):
         return redirect(url_for('showCategory',
                                 category_name=category.name))
     else:
-        return render_template('deleteitem.html',
+        return render_template('wallpaper_delete.html',
                                 wallpaper=itemToDelete)
 
 
