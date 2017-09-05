@@ -424,24 +424,24 @@ def allWallpapersJSON():
         if items:
             category_dict[c]["Wallpaper"] = items
     return jsonify(Category=category_dict)
-
-@app.route('/categories/JSON')
+# Displays all categories currently in the database
+@app.route('/JSON/categories/')
 def categoriesJSON():
     categories = session.query(Category).all()
     return jsonify(categories=[c.serialize for c in categories])
-
-@app.route('/wallpapers/JSON')
+# All Wallpapers
+@app.route('/JSON/wallpapers/')
 def itemsJSON():
     items = session.query(Wallpapers).all()
     return jsonify(items=[i.serialize for i in items])
-
-@app.route('/<path:category_name>/wallpapers/JSON')
+# ALL wallpapers in a particular category
+@app.route('/JSON/categories/<path:category_name>/')
 def categoryWallpapersJSON(category_name):
     category = session.query(Category).filter_by(name=category_name).one()
     items = session.query(Wallpapers).filter_by(category=category).all()
     return jsonify(items=[i.serialize for i in items])
-
-@app.route('/<path:category_name>/<path:item_name>/JSON')
+# Specific Wallpaper in its category
+@app.route('/JSON/categories/<path:category_name>/<path:item_name>/')
 def WallpaperJSON(category_name, item_name):
     category = session.query(Category).filter_by(name=category_name).one()
     wallpaper = session.query(Wallpapers).filter_by(name=item_name,\
