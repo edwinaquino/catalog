@@ -4,6 +4,3 @@ __pycache__
 *.log
 Vagrantfile
 *.db
-static/css/animate*
-static/css/boot*
-static/js/boot*
