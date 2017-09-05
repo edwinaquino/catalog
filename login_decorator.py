@@ -2,6 +2,7 @@ from functools import wraps
 from flask import redirect
 from flask import session as login_session
 
+
 def login_check(f):
     ''' Determin if a user is logged in or not'''
     @wraps(f)
