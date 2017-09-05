@@ -1,0 +1,41 @@
+
+Does the project implement a JSON endpoint with all required content? Yes
+
+Does the website read category and item information from a database? YES
+
+Does the website include a form allowing users to add new items and correctly processes these forms? YES
+
+Does the website include a form to update a record in the database and correctly processes this form? YES
+
+Does the website include a way to delete an item from the catalog? YES
+
+Do create, delete, and update operations consider authorization status prior to execution? YES
+
+Does the website implement a third party authentication and authorization service? YES, Google
+
+Is there a “login” and “logout” button/link in the website? YES
+
+Is the code ready for personal review and is neatly formatted? YES
+
+Are comments present and effectively explain longer code procedures? YES
+
+Is there a README file included detailing all steps required to successfully run the application? YES
+
+How will I complete this project?
+
+This project is connected to the Full Stack Foundations and Authentication and Authorization courses, but depending on your background knowledge you may not need the entirety of both courses to complete this project. Here's what you should do:
+
+    Install Vagrant and VirtualBox
+    Clone the fullstack-nanodegree-vm
+    Launch the Vagrant VM (vagrant up)
+    Write your Flask application locally in the vagrant/catalog directory (which will automatically be synced to /vagrant/catalog within the VM).
+    Run your application within the VM (python /vagrant/catalog/application.py)
+    Access and test your application by visiting http://localhost:8000 locally
+
+Get started with this helpful guide.
+https://docs.google.com/document/d/1jFjlq_f-hJoAZP8dYuo5H3xY62kGyziQmiv9EPIA7tM/pub?embedded=true
+
+You can find the link to the fullstack-nanodegree-vm here.
+http://github.com/udacity/fullstack-nanodegree-vm
+
+
