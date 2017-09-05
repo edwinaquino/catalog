@@ -1,6 +1,6 @@
-#===================
-# Imports
-#===================
+####################
+# Required Imports
+####################
 from flask import Flask, render_template, url_for, request, redirect, flash, jsonify, make_response
 from flask import session as login_session
 from sqlalchemy import create_engine, asc, desc
@@ -12,21 +12,16 @@ import os, random, string, datetime, json, httplib2, requests
 # Import login_check from login_decorator.py
 from login_decorator import login_check
 
-#===================
+####################
 # Flask instance
-#===================
+####################
 app = Flask(__name__)
 
-#===================
-# GConnect CLIENT_ID
-#===================
-CLIENT_ID = json.loads(
-    open('client_secrets.json', 'r').read())['web']['client_id']
-APPLICATION_NAME = "Wallpaper-Website"
 
-#===================
+
+####################
 # DB
-#===================
+####################
 # Connect to database
 engine = create_engine('sqlite:///wallpapers.db')
 Base.metadata.bind = engine
@@ -34,16 +29,21 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
+####################
+# GConnect CLIENT_ID
+####################
+CLIENT_ID = json.loads(
+    open('client_secrets.json', 'r').read())['web']['client_id']
+APPLICATION_NAME = "Wallpaper-Website"
 
 
-
-#===================
-# Flask Routing
-#===================
-# Homepage
+####################
+# Wallpaper URLs Routing
+####################
+# Homepage and default Categories
 @app.route('/')
 @app.route('/wallpapers/')
-def showCatalog():
+def displayCategory():
     categories = session.query(Category).order_by(asc(Category.name))
     items = session.query(Wallpapers).order_by(desc(Wallpapers.date)).limit(5)
     return render_template('wallpapers.html',
@@ -51,6 +51,7 @@ def showCatalog():
                             items = items)
 
 # Category Wallpapers
+# example: http://localhost:5000/wallpapers/Animal/
 @app.route('/wallpapers/<path:category_name>/')
 def showCategory(category_name):
     categories = session.query(Category).order_by(asc(Category.name))
@@ -74,7 +75,8 @@ def showCategory(category_name):
                                 count = count,
                                 user=user)
 
-# Display a Specific Wallpaper
+# Show Wallpaper Details
+# example: http://localhost:5000/wallpapers/Animal/Tigers/
 @app.route('/wallpapers/<path:category_name>/<path:item_name>/')
 def showWallpaper(category_name, item_name):
     wallpaper = session.query(Wallpapers).filter_by(name=item_name).one()
@@ -93,7 +95,9 @@ def showWallpaper(category_name, item_name):
                                 categories = categories,
                                 creator = creator)
 
-# Add a category
+# * LOGIN REQUIRED *
+# Add new category
+# http://localhost:5000/wallpapers/addcategory
 @app.route('/wallpapers/addcategory', methods=['GET', 'POST'])
 @login_check
 def addCategory():
@@ -104,8 +108,8 @@ def addCategory():
         print newCategory
         session.add(newCategory)
         session.commit()
-        flash('Category Successfully Added!')
-        return redirect(url_for('showCatalog'))
+        flash('[OK] New Category Created!')
+        return redirect(url_for('displayCategory'))
     else:
         return render_template('wall_category_add.html')
 
@@ -120,16 +124,16 @@ def editCategory(category_name):
     user = getUserInfo(login_session['user_id'])
     # If logged in user != wallpaper owner redirect them
     if creator.id != login_session['user_id']:
-        flash ("You cannot edit this Category. This Category belongs to %s" % creator.name)
-        return redirect(url_for('showCatalog'))
+        flash ("[ERROR] You are not authorized to edit this category.")
+        return redirect(url_for('displayCategory'))
     # POST methods
     if request.method == 'POST':
         if request.form['name']:
             editedCategory.name = request.form['name']
         session.add(editedCategory)
         session.commit()
-        flash('Category Wallpaper Successfully Edited!')
-        return  redirect(url_for('showCatalog'))
+        flash('[Edit Completed] - Wallpaper Category Successfully Edited!')
+        return  redirect(url_for('displayCategory'))
     else:
         return render_template('wall_category_edit.html',
                                 categories=editedCategory,
@@ -145,13 +149,13 @@ def deleteCategory(category_name):
     user = getUserInfo(login_session['user_id'])
     # If logged in user != wallpaper owner redirect them
     if creator.id != login_session['user_id']:
-        flash ("You cannot delete this Category. This Category belongs to %s" % creator.name)
-        return redirect(url_for('showCatalog'))
+        flash ("[ERROR] You are not authorized to delete this category.")
+        return redirect(url_for('displayCategory'))
     if request.method =='POST':
         session.delete(categoryToDelete)
         session.commit()
-        flash('Category Successfully Deleted! '+categoryToDelete.name)
-        return redirect(url_for('showCatalog'))
+        flash('[OK] Category Deleted! '+categoryToDelete.name)
+        return redirect(url_for('displayCategory'))
     else:
         return render_template('deletecategory.html',
                                 category=categoryToDelete)
@@ -171,8 +175,8 @@ def addWallpaper():
             user_id=login_session['user_id'])
         session.add(newWallpaper)
         session.commit()
-        flash('Wallpaper Successfully Added!')
-        return redirect(url_for('showCatalog'))
+        flash('[OK] Wallpaper Added!')
+        return redirect(url_for('displayCategory'))
     else:
         return render_template('wall_wallpaper_add.html',
                                 categories=categories)
@@ -189,7 +193,7 @@ def editWallpaper(category_name, item_name):
     # If logged in user != wallpaper owner redirect them
     if creator.id != login_session['user_id']:
         flash ("You cannot edit this wallpaper. This wallpaper belongs to %s" % creator.name)
-        return redirect(url_for('showCatalog'))
+        return redirect(url_for('displayCategory'))
     # POST methods
     if request.method == 'POST':
         if request.form['name']:
@@ -205,7 +209,7 @@ def editWallpaper(category_name, item_name):
         editedWallpaper.date = time
         session.add(editedWallpaper)
         session.commit()
-        flash('Category Wallpaper Successfully Edited!')
+        flash('[OK] Wallpaper Category Edited!')
         return  redirect(url_for('showCategory',
                                 category_name=editedWallpaper.category.name))
     else:
@@ -226,11 +230,11 @@ def deleteWallpaper(category_name, item_name):
     # If logged in user != wallpaper owner redirect them
     if creator.id != login_session['user_id']:
         flash ("You cannot delete this wallpaper. This wallpaper belongs to %s" % creator.name)
-        return redirect(url_for('showCatalog'))
+        return redirect(url_for('displayCategory'))
     if request.method =='POST':
         session.delete(itemToDelete)
         session.commit()
-        flash('Wallpaper Successfully Deleted! '+itemToDelete.name)
+        flash('[OK] Wallpaper Deleted! '+itemToDelete.name)
         return redirect(url_for('showCategory',
                                 category_name=category.name))
     else:
@@ -238,9 +242,9 @@ def deleteWallpaper(category_name, item_name):
                                 wallpaper=itemToDelete)
 
 
-#===================
+####################
 # Login Routing
-#===================
+####################
 # Login - Create anti-forgery state token
 @app.route('/login')
 def showLogin():
@@ -269,7 +273,7 @@ def gconnect():
         credentials = oauth_flow.step2_exchange(code)
     except FlowExchangeError:
         response = make_response(
-            json.dumps('Failed to upgrade the authorization code.'), 401)
+            json.dumps('[ERROR] Unable to upgrade your authorization code.'), 401)
         response.headers['Content-Type'] = 'application/json'
         return response
 
@@ -333,17 +337,17 @@ def gconnect():
         user_id = createUser(login_session)
     login_session['user_id'] = user_id
 
-    output = ''
-    output += '<h1>Welcome, '
+    output = '<h1>Congratulations</h1>'
+    output += '<h4>Welcome, '
     output += login_session['username']
-    output += '!</h1>'
+    output += '</h4>'
     output += '<img src="'
     output += login_session['picture']
-    output += ' " style = "width: 300px; height: 300px;border-radius: 150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
+    output += ' " class="user_profile_img"> '
     if not login_session['username']:
         # in case user does not have a name in their google profile, show their email
         login_session['username'] = login_session['email']
-    flash("you are now logged in as %s" % login_session['username'])
+    flash("You're logged in as %s" % login_session['username'])
     return output
 
 # User Helper Functions
@@ -395,7 +399,7 @@ def gdisconnect():
 
         # response = make_response(json.dumps('Successfully disconnected.'), 200)
         # response.headers['Content-Type'] = 'application/json'
-        response = redirect(url_for('showCatalog'))
+        response = redirect(url_for('displayCategory'))
         flash("You are now logged out.")
         return response
     else:
@@ -405,9 +409,9 @@ def gdisconnect():
         response.headers['Content-Type'] = 'application/json'
         return response
 
-#===================
+####################
 # JSON
-#===================
+####################
 @app.route('/JSON')
 def allWallpapersJSON():
     categories = session.query(Category).all()

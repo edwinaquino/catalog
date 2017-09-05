@@ -11,10 +11,6 @@ body {
     color:#ff9933;
 }
 
-.alert{
-  z-index: 1000;
-}
-
 
 .category_list{
    background: #666;
@@ -44,3 +40,8 @@ body {
 .wallpaper-thumbs{
   float: left; margin:10px;max-width: 25%;
 }
+.user_profile_img{
+width: 100px; height: 100px;border-radius: 150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;
+}
+
+
