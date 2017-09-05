@@ -11,7 +11,7 @@
 
 
             <div class="list-group">
-              <div class="list-group-item list-group-item-action active">Categories</div>
+              <div class="list-group-item list-group-item-action active">Wallpaper Categories</div>
 {% for c in categories %}
   <a href="{{url_for('showCategory', category_name = c.name,)}}" class="list-group-item list-group-item-action category_list {% if category == c.name %} disabled{% endif %} ">{{ c.name }}</a>
   {% endfor %}
