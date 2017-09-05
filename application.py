@@ -51,7 +51,7 @@ def displayCategory():
                             items = items)
 
 # Category Wallpapers
-# example: http://localhost:5000/wallpapers/Animal/
+# example: http://localhost:8000/wallpapers/Animal/
 @app.route('/wallpapers/<path:category_name>/')
 def showCategory(category_name):
     categories = session.query(Category).order_by(asc(Category.name))
@@ -76,7 +76,7 @@ def showCategory(category_name):
                                 user=user)
 
 # Show Wallpaper Details
-# example: http://localhost:5000/wallpapers/Animal/Tigers/
+# example: http://localhost:8000/wallpapers/Animal/Tigers/
 @app.route('/wallpapers/<path:category_name>/<path:item_name>/')
 def showWallpaper(category_name, item_name):
     wallpaper = session.query(Wallpapers).filter_by(name=item_name).one()
@@ -97,7 +97,7 @@ def showWallpaper(category_name, item_name):
 
 # * LOGIN REQUIRED *
 # Add new category
-# http://localhost:5000/wallpapers/addcategory
+# http://localhost:8000/wallpapers/addcategory
 @app.route('/wallpapers/addcategory', methods=['GET', 'POST'])
 @login_check
 def addCategory():
@@ -468,4 +468,4 @@ def dated_url_for(endpoint, **values):
 if __name__ == '__main__':
     app.secret_key = 'DEV_SECRET_KEY'
     app.debug = True
-    app.run(host = '0.0.0.0', port = 5000)
+    app.run(host = '0.0.0.0', port = 8000)

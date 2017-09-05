@@ -19,7 +19,7 @@ session.query(User).delete()
 # Create a default mock user
 user1 = User(name="Sys Admin",
               email="admin@localhost",
-              picture='http://localhost:5000/static/admin.jpg')
+              picture='http://localhost:8000/static/admin.jpg')
 session.add(user1)
 session.commit()
 
@@ -75,4 +75,4 @@ Wallpaper3 = Wallpapers(name="Futuistic Car",
 session.add(Wallpaper3)
 session.commit()
 
-print "[OK] Moke Data Has Been Created."
+print "[OK] Mock Data Has Been Created."
