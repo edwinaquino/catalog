@@ -1,8 +1,8 @@
 # Computer Wallpapers Catalog App
-This project is an app developed for Udacity Full Stack Web Developer Nanodegree.
+This project is an app developed for Udacity Full Stack Web Developer Nanodegree. The goal for this project is to develop an application that provides a list of items within a variety of categories as well as provide a user registration and authentication system. Registered users will have the ability to post, edit and delete their own items. Develop a RESTful web application using the Python framework Flask along with implementing third-party OAuth authentication. Properly use the various HTTP methods available and how these methods relate to CRUD (create, read, update and delete) operations.
 
 ## About
-This app is a python project which uses the Flask framework to display a catalog of wallpapers using a SQL database. The website display all the categories and all the wallpapers in each category. Using OAuth2.0, users are authenticated and authorized to add, edit or delete categories and wallpapers.
+This app is a python project which uses the Flask framework to display a catalog of wallpapers using a SQL database. The website displays all the categories and all the wallpapers in each category. Using OAuth2.0, users are authenticated and authorized to add, edit or delete categories and wallpapers.
 
 ## Requirements
 * VirtualBox 5.1
