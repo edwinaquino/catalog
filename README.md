@@ -72,20 +72,19 @@ This app uses Google OAuth2.0 Client Ids to authenticate and authorize registere
 ## JSON Endpoints
 This application uses JSON endpoints which are available publicly. The following are examples of the 'animal' category and 'Tigers' Wallpaper
 
-Displays all categories currently in the database
-JSON: `/JSON/categories/`
+Displays all categories currently in the database<br>
+JSON: `/JSON/categories/`<br>
 Example: http://localhost:8000/JSON/categories/
 
-Displays all wallpapers currently in the database
-JSON: `/JSON/wallpapers/`
+Displays all wallpapers currently in the database<br>
+JSON: `/JSON/wallpapers/`<br>
 Example: http://localhost:8000/JSON/wallpapers/
 
-Displays all the wallpapers in a particular category
-JSON: `/JSON/categories/<path:category_name>/`
+Displays all the wallpapers in a particular category<br>
+JSON: `/JSON/categories/<path:category_name>/`<br>
 Example: http://localhost:8000/JSON/categories/Animal/
 
-Displays a specific wallpaper in its category
-JSON: `/JSON/categories/<path:category_name>/<path:item_name>/`
+Displays a specific wallpaper in its category<br>
+JSON: `/JSON/categories/<path:category_name>/<path:item_name>/`<br>
 Example: http://localhost:8000/JSON/categories/Animal/Tigers/
 
-NOTE: For more information about the setup of the JSON structure, take a look at the JSON section of application.py file
