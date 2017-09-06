@@ -1,34 +1,12 @@
-{% extends "wall_main.html" %}
-{% include "wall_nav.html" %}
-
-
-
-
-
-{% block content %}
-{% include "wall_categories.html" %}
-
-
-
-
-       {% for i in items %}
-        <div class="wallpaper-thumbs">
-          <div class="card h-150">
-            <a href = "{{url_for('showWallpaper', category_name = i.category.name, item_name = i.name)}}"><img class="card-img-top" src="{{ i.picture }}" alt="{{ i.name }}"></a>
-            <div class="card-body">
-              <h4 class="card-title text-center">
+{% extends "wall_main.html" %} {% include "wall_nav.html" %} {% block content %} {% include "wall_categories.html" %} {% for i in items %}
+<div class="wallpaper-thumbs">
+    <div class="card h-150">
+        <a href="{{url_for('showWallpaper', category_name = i.category.name, item_name = i.name)}}"><img class="card-img-top" src="{{ i.picture }}" alt="{{ i.name }}"></a>
+        <div class="card-body">
+            <h4 class="card-title text-center">
                 <a href = "{{url_for('showWallpaper', category_name = i.category.name, item_name = i.name)}}">{{ i.name }}</a>
               </h4>
-
-            </div>
-          </div>
         </div>
-         {% endfor %}
-
-
-
-{% include "wall_footer.html" %}
-
-
-      {% endblock %}
-
+    </div>
+</div>
+{% endfor %} {% include "wall_footer.html" %} {% endblock %}

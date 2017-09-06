@@ -1,48 +1,19 @@
-{% extends "wall_main.html" %}
-
-{% block title %}Category Wallpapers{% endblock title %}
-{% include "wall_nav.html" %}
-
-{% block content %}
-    <h1 class="text-center">{{category}} Wallpapers</h1>
-{% include "wall_categories.html" %}
-
-
-
+{% extends "wall_main.html" %} {% block title %}Category Wallpapers{% endblock title %} {% include "wall_nav.html" %} {% block content %}
+<h1 class="text-center">{{category}} Wallpapers</h1> {% include "wall_categories.html" %}
 <!-- Page Content -->
-
-{% if count %}
-{% else %}
-  <div class="alert alert-info">No wallpapers have been added to this category. Please add a wallpaper to this category</div>
-{% endif %}
-
-
-
-
-
-
-
-
-
-
-
-       {% for i in items %}
-        <div class="wallpaper-thumbs">
-          <div class="card h-150">
-            <a href = "{{url_for('showWallpaper', category_name = i.category.name, item_name = i.name)}}"><img class="card-img-top" src="{{ i.picture }}" alt="{{ i.name }}"></a>
-            <div class="card-body">
-              <h4 class="card-title text-center">
+{% if count %} {% else %}
+<div class="alert alert-info">No wallpapers have been added to this category. Please add a wallpaper to this category</div>
+{% endif %} {% for i in items %}
+<div class="wallpaper-thumbs">
+    <div class="card h-150">
+        <a href="{{url_for('showWallpaper', category_name = i.category.name, item_name = i.name)}}"><img class="card-img-top" src="{{ i.picture }}" alt="{{ i.name }}"></a>
+        <div class="card-body">
+            <h4 class="card-title text-center">
                 <a href = "{{url_for('showWallpaper', category_name = i.category.name, item_name = i.name)}}">{{ i.name }}</a>
               </h4>
-
-            </div>
-          </div>
         </div>
-         {% endfor %}
-
-
-
-
+    </div>
+</div>
+{% endfor %}
 <!-- /.section -->
-{% include "wall_footer.html" %}
-{% endblock %}
+{% include "wall_footer.html" %} {% endblock %}
