@@ -25,7 +25,7 @@
                 <label for="picture">Category:</label>
                 <select name="category">
                     {% for c in categories %}
-                    <option value="{{c.name}}" {% if c==w allpaper.category %} selected {% endif %}>{{c.name}}</option>
+                    <option value="{{c.name}}" {% if c==wallpaper.category %} selected {% endif %}>{{c.name}}</option>
                     {% endfor %}
                 </select>
             </div>
